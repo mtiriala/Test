@@ -23,8 +23,10 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    ls
+                    ls  
                     python3 -m pip install -r requirements.txt
+                    . $VENV/bin/activate.bat
+
                 '''
             }
         }
@@ -33,7 +35,7 @@ pipeline {
             steps {
                 // Run Django tests
                 sh '''
-                    . $VENV/bin/activate
+                    .$VENV/bin/activate
                     python manage.py test
                 '''
             }
