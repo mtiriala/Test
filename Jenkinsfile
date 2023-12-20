@@ -13,7 +13,7 @@ pipeline {
                 sh '''   
                     chmod +777 "$(pwd)/venv/bin/activate"
                     python3 -m venv .venv
-                    source .venv/bin/activate
+                    . .venv/bin/activate
                     pip install -r requirements.txt
                     python manage.py test
                 '''
