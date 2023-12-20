@@ -13,7 +13,7 @@ pipeline {
                 script {
                     if (!fileExists(VENV)) {
                         sh''' 
-                          pip install virtualenv
+                          pip3 -m install virtualenv
                           python3 -m venv $VENV
                         '''
 
@@ -23,7 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    source "$VENV/Scripts/activate.bat
+                    source "$VENV/Scripts/activate.bat"
                     python3 -m pip install -r requirements.txt
                 '''
             }
