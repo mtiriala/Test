@@ -23,7 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    pip3 -m install virtualenv
+                    sudo su pip3 -m install virtualenv
                     python3 -m venv $VENV
                     cd "$VENV/bin/"
                     ls
