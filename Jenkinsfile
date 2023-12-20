@@ -12,7 +12,7 @@ pipeline {
  
                 sh '''   
                     chmod +777 "$(pwd)/venv/bin/activate"
-                    python3.8 -m venv .venv
+                    python3 -m venv .venv
                     . .venv/bin/activate
                     pip install -r requirements.txt
                 '''
@@ -27,9 +27,9 @@ pipeline {
                 // Run Django tests
                 sh '''
                 . .venv/bin/activate
-                python3.8 manage.py makemigrations
-                python3.8 manage.py migrate
-                python3.8 manage.py test --keepdb
+                python3 manage.py makemigrations
+                python3 manage.py migrate
+                python3 manage.py test --keepdb
                 '''
             }
         }
