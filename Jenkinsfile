@@ -10,13 +10,18 @@ pipeline {
             steps {
                 checkout scm
 
-                script {                                  
+                script {
+                    if (!fileExists(VENV)) {
+                        sh 'python3 -m venv $VENV'
+                    }
+                }
+
                 // Install dependencies
                 sh '''
+                    ls
                     . $VENV/bin/activate
                     pip install -r requirements.txt
                 '''
-                }
             }
         }
 
