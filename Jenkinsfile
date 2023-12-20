@@ -24,7 +24,7 @@ pipeline {
                 // Install dependencies
                 sh '''
                     cd venv
-                    source env/bin/activate
+                    source Scripts/activate
                     ls  
                     python3 -m pip install -r requirements.txt
                     pip install django gunicorn
