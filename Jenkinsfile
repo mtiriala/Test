@@ -25,8 +25,7 @@ pipeline {
                 sh '''
                     ls  
                     python3 -m pip install -r requirements.txt
-                    . $VENV/bin/activate.bat
-
+                    source $VENV/bin/activate
                 '''
             }
         }
