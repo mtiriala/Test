@@ -42,14 +42,7 @@ pipeline {
         //}
 
 
-            stage('Build Docker Image') {
-            steps {
-                script {
-                    // Building the Docker image with a tag
-                sh 'docker build -t my-django-app:v1.0 .'
-                }
-            }
-        }
+
       stage('Build Docker Image') {
             steps {
                 script {
