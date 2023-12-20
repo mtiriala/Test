@@ -23,7 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    sudo -A apt install python3.8-venv
+                    pip3 -m install virtualenv
                     python3 -m venv $VENV
                     cd "$VENV/bin/"
                     ls
