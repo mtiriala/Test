@@ -24,6 +24,7 @@ pipeline {
                 // Install dependencies
                 sh '''
                     cd venv
+                    ls
                     source env/bin/activate
                     ls  
                     python3 -m pip install -r requirements.txt
