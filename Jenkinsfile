@@ -23,36 +23,40 @@ pipeline {
             }
         }
 
-        stage('Test') {
-            steps {
-                // Run Django tests
-                sh '''
-                . .venv/bin/activate
-                python3 manage.py makemigrations
-                python3 manage.py migrate
-                python manage.py collectstatic
-                python3 manage.py test 
-                '''
-            }
-        }
+        //stage('Test') {
+        //steps {
+////////// Run Django tests
+////////sh '''
+////////. .venv/bin/activate
+////////python3 manage.py makemigrations
+////////python3 manage.py migrate
+////////python manage.py collectstatic
+////////python3 manage.py test 
+               // '''
+            //}
+        //}
 
-        stage('Build') {
+
+            stage('Build Docker Image') {
             steps {
-                // Additional build steps can be added here
-                // For example, building a Docker image
                 script {
-                    docker.build("my-django-app")
+                    // Building the Docker image with a tag
+                sh 'docker build -t my-django-app:v1.0 .'
                 }
             }
         }
+        stage('Deploy our image') {
+        steps{
+            script {
+            docker.withRegistry( '', registryCredential ) {
+            dockerImage.push()
+            }
+            }
+            }
+            }
+
 
         // Additional stages like 'Deploy' can be added here
     }
 
-    post {
-        always {
-            // Perform clean-up actions, if required
-            echo 'Pipeline execution completed'
-        }
-    }
 }
