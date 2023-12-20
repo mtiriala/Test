@@ -51,6 +51,15 @@ pipeline {
                 }
             }
         }
+        stage('Run Docker Compose') {
+            steps {
+                script {
+                    sh '''
+                        docker-compose up -d
+                    '''
+                }
+            }
+        }
 
         // Additional stages like 'Deploy' can be added here
     }
