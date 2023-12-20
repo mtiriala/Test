@@ -23,7 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    cd "$VENV/Scripts/"
+                    cd "$VENV/"
                     ls
                     python3 -m pip install -r requirements.txt
                 '''
