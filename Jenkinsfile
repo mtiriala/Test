@@ -23,10 +23,12 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    #!/bin/bash
+                    cd venv
+                    source env/bin/activate
                     ls  
                     python3 -m pip install -r requirements.txt
-                    . $VENV/bin/activate  # Corrected activation command
+                    pip install django gunicorn
+
                 '''
             }
         }
