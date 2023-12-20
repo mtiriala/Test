@@ -12,7 +12,7 @@ pipeline {
 
                 script {
                     if (!fileExists(VENV)) {
-                        sh 'python -m venv $VENV'
+                        sh 'python3 -m venv $VENV'
                     }
                 }
 
