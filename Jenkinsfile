@@ -29,8 +29,11 @@ pipeline {
         }
 
         stage('Test') {
-        //steps {
-            sh 'cd'
+        steps {
+            script{
+               sh 'ls'
+            }
+
 ////////// Run Django tests
 ////////sh '''
 ////////. .venv/bin/activate
@@ -39,7 +42,7 @@ pipeline {
 ////////python manage.py collectstatic
 ////////python3 manage.py test 
                // '''
-            //}
+            }
         }
 
 
@@ -64,7 +67,7 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    sh 'cd'
+                    sh 'ls'
                    // docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
                      //   dockerImage.push("${imageTag}")
                         // Optionally, push the 'latest' tag as well
