@@ -69,7 +69,7 @@ pipeline {
                      //   dockerImage.push("${imageTag}")
                         // Optionally, push the 'latest' tag as well
                        // dockerImage.push("latest")
-                    }
+                   // }
                 }
             }
         }
