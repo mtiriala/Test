@@ -26,7 +26,7 @@ pipeline {
                     #!/bin/bash
                     ls  
                     python3 -m pip install -r requirements.txt
-                    source $VENV/Scripts/activate
+                    . $VENV/Scripts/activate  # Corrected activation command
                 '''
             }
         }
