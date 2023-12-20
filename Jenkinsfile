@@ -26,7 +26,7 @@ pipeline {
                     #!/bin/bash
                     ls  
                     python3 -m pip install -r requirements.txt
-                    . $VENV/Scripts/activate  # Corrected activation command
+                    . $VENV/bin/activate  # Corrected activation command
                 '''
             }
         }
@@ -35,7 +35,7 @@ pipeline {
             steps {
                 // Run Django tests
                 sh '''
-                    .$VENV/bin/activate
+                    .$VENV/binq/activate
                     python manage.py test
                 '''
             }
