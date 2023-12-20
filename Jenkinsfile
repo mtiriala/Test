@@ -60,6 +60,17 @@ pipeline {
                 }
             }
         }
+        stage('Push to Docker Hub') {
+            steps {
+                script {
+                    docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+                        dockerImage.push("${imageTag}")
+                        // Optionally, push the 'latest' tag as well
+                        dockerImage.push("latest")
+                    }
+                }
+            }
+        }
 
         // Additional stages like 'Deploy' can be added here
     }
