@@ -1,6 +1,11 @@
 pipeline {
     agent any
     environment {
+        registryCredential = 'docker'
+        dockerImage = ''
+        imageName = 'my-django-app' // Replace with your image name
+        imageTag = 'v1.0' // Replace with your desired image tag
+    }
      registryCredential = 'docker'
 }
 
@@ -40,11 +45,10 @@ pipeline {
         //}
 
 
-            stage('Build Docker Image') {
+        stage('Build Docker Image') {
             steps {
                 script {
-                    // Building the Docker image with a tag
-                sh 'docker build -t my-django-app:v1.0 .'
+                    dockerImage = docker.build("${imageName}:${imageTag}")
                 }
             }
         }
