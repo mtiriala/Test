@@ -6,9 +6,6 @@ pipeline {
         imageName = 'my-django-app' // Replace with your image name
         imageTag = 'v1.0' // Replace with your desired image tag
     }
-     registryCredential = 'docker'
-}
-
 
     stages {
         stage('Preparation') {
@@ -45,23 +42,22 @@ pipeline {
         //}
 
 
-        stage('Build Docker Image') {
+            stage('Build Docker Image') {
             steps {
                 script {
+                    // Building the Docker image with a tag
+                sh 'docker build -t my-django-app:v1.0 .'
+                }
+            }
+        }
+      stage('Build Docker Image') {
+            steps {
+                script {
+                    // Building the Docker image with a tag using Docker Pipeline plugin
                     dockerImage = docker.build("${imageName}:${imageTag}")
                 }
             }
         }
-        stage('Deploy our image') {
-        steps{
-            script {
-            docker.withRegistry( '', registryCredential ) {
-            dockerImage.push()
-            }
-            }
-            }
-            }
-
 
         // Additional stages like 'Deploy' can be added here
     }
