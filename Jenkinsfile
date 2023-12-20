@@ -23,6 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
+                    python3 -m venv $VENV
                     cd "$VENV/bin/"
                     ls
                     activate.bat
