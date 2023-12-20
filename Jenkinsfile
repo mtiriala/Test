@@ -23,11 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    cd "$VENV/bin/"
                     ls
-                    activate.bat
-                    cd ..
-                    cd ..
                     python3 -m pip install -r requirements.txt
                 '''
             }
