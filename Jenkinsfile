@@ -23,6 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
+                    #!/bin/bash
                     ls  
                     python3 -m pip install -r requirements.txt
                     source $VENV/bin/activate
