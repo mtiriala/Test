@@ -18,8 +18,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    cd $VENV/Scripts/
-                    source activate.bat
+                    source "$VENV/Scripts/activate"
                     pip install -r requirements.txt
                 '''
             }
