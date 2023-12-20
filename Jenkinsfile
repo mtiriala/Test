@@ -28,19 +28,15 @@ pipeline {
             }
         }
 
-        stage('Test') {
+        stage ('Test') {
         steps {
-            script{
-               sh 'ls'
-            }
-
-////////// Run Django tests
-////////sh '''
-////////. .venv/bin/activate
-////////python3 manage.py makemigrations
-////////python3 manage.py migrate
-////////python manage.py collectstatic
-////////python3 manage.py test 
+// Run Django tests
+       sh '''
+       . .venv/bin/activate
+       python3 manage.py makemigrations
+       python3 manage.py migrate
+       python manage.py collectstatic
+       python3 manage.py test 
                // '''
             }
         }
@@ -67,12 +63,11 @@ pipeline {
         stage('Push to Docker Hub') {
             steps {
                 script {
-                    sh 'ls'
-                   // docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
-                     //   dockerImage.push("${imageTag}")
+                    docker.withRegistry('https://registry.hub.docker.com', registryCredential) {
+                        dockerImage.push("${imageTag}")
                         // Optionally, push the 'latest' tag as well
-                       // dockerImage.push("latest")
-                   // }
+                        dockerImage.push("latest")
+                    }
                 }
             }
         }
