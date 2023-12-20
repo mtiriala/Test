@@ -11,7 +11,6 @@ pipeline {
                 checkout scm
 
                 script {
-                    if (!fileExists(VENV)) {
                         sh''' 
                           pip3 -m install virtualenv
                           python3 -m venv $VENV
