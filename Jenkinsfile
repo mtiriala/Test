@@ -12,27 +12,17 @@ pipeline {
 
                 script {
                         sh''' 
-                          pip3 -m install virtualenv
-                          python3 -m venv $VENV
-                        '''
+                        virtualenv env
+                        source env/bin/activate
+                        pip install -r requirements.txt
+                        pip install django gunicorn
 
 
+
+                '''
                     
                 }
 
-                // Install dependencies
-                sh '''
-                    #!/bin/bash
-                    cd venv/bin 
-                    ls
-                    pwd
-                    dir
-                    source "activate"
-                    ls  
-                    python3 -m pip install -r requirements.txt
-                    pip install django gunicorn
-
-                '''
             }
         }
 
