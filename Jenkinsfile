@@ -23,7 +23,7 @@ pipeline {
 
                 // Install dependencies
                 sh '''
-                    source "$VENV/Scripts/activate"
+                    source "$VENV/bin/activate"
                     python3 -m pip install -r requirements.txt
                 '''
             }
